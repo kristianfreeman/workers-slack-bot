@@ -1,0 +1,23 @@
+{
+  "name": "hugo-workers-example",
+  "private": true,
+  "description": "Example project for serving Hugo sites with Cloudflare Workers",
+  "version": "0.1.0",
+  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "dependencies": {
+    "serverless-cloudflare-workers": "^1.2.0",
+    "serverless-dotenv-plugin": "^2.0.1",
+    "serverless-webpack": "^5.2.0"
+  },
+  "homepage": "https://github.com/signalnerve/hugo-cloudflare-workers-example",
+  "license": "MIT",
+  "main": "n/a",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+  },
+  "scripts": {
+    "build": "hugo",
+    "deploy": "hugo && bin/deploy"
+  }
+}
