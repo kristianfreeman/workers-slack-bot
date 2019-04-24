@@ -1,7 +1,0 @@
-source .env
-
-[ -z "$BUCKET_NAME" ] && echo "BUCKET_NAME environment variable should be set: check .env" && exit 1;
-
-gsutil -m rsync -d -r public "gs://$BUCKET_NAME"
-gsutil iam ch allUsers:objectViewer "gs://$BUCKET_NAME"
-echo "Your website has been deployed to http://storage.googleapis.com/$BUCKET_NAME"
