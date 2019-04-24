@@ -1,4 +1,5 @@
-import {lookup, webhook} from './src/routes';
+import lookup from './src/handlers/lookup';
+import webhook from './src/handlers/webhook';
 import Router from './router';
 
 addEventListener('fetch', event => {

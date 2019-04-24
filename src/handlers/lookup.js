@@ -3,7 +3,7 @@ import qs from 'qs';
 import {fetchGithubIssue, parseGhIssueString} from '../utils/github';
 import {constructGhIssueSlackMessage} from '../utils/slack';
 
-const lookup = async request => {
+export default async request => {
   try {
     const body = await request.text();
     const params = qs.parse(body);
@@ -33,5 +33,3 @@ const lookup = async request => {
     return new Response(errorText);
   }
 };
-
-export default lookup;

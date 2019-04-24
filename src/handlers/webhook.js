@@ -2,7 +2,7 @@ import {slackWebhookUrl} from '../config';
 import {fetchGithubIssue, parseGhIssueString} from '../utils/github';
 import {constructGhIssueSlackMessage} from '../utils/slack';
 
-const webhook = async request => {
+export default async request => {
   try {
     const body = await request.text();
     const {action, issue, repository} = JSON.parse(body);
@@ -27,5 +27,3 @@ const webhook = async request => {
     return new Response(errorText, {status: 500});
   }
 };
-
-export default webhook;
