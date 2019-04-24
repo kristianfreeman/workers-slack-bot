@@ -1,4 +1,4 @@
-import lookup from './lookup'
-import webhook from './webhook'
+import lookup from './lookup';
+import webhook from './webhook';
 
-export { lookup, webhook }
+export {lookup, webhook};

@@ -1,1 +1,1 @@
-export const slackWebhookUrl = ""
+export const slackWebhookUrl = "";
