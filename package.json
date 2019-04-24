@@ -5,7 +5,6 @@
   "version": "0.1.0",
   "author": "Kristian Freeman <kristian@kristianfreeman.com>",
   "dependencies": {
-    "@slack/webhook": "^5.0.0",
     "qs": "^6.7.0",
     "serverless-cloudflare-workers": "^1.2.0",
     "serverless-dotenv-plugin": "^2.0.1",
