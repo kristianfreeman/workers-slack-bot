@@ -17,3 +17,7 @@ $RECYCLE.BIN/
 
 # env config
 .env
+
+dist
+
+src/config.js

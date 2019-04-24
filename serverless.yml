@@ -2,7 +2,7 @@
 # The dotenv plugin will do this for you automatically if you place them in .env.
 
 service:
-  name: serverless-workers-blueprint
+  name: workers-slack-bot
 
 provider:
   name: cloudflare
@@ -16,8 +16,9 @@ plugins:
 
 functions:
   worker:
-    name: serverless-worker
+    name: workers-slack-bot
     script: worker
+    webpack: true
     events:
       - http:
           url: ${env:WORKER_ROUTE}

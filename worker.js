@@ -1,25 +1,24 @@
+import { lookup, webhook } from './src/routes'
+import { isPost, routeMatches } from './src/utils'
+
 addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request))
 })
 
-const constructResponse = (response, body, headers = {}) =>
-  new Response(body, {
-    status: response.status,
-    statusText: response.statusText,
-    headers: Object.assign({}, response.headers, headers),
-  })
-
-const bucketName = "hugo-workers"
-const baseUrl = `http://storage.googleapis.com/${bucketName}`
-
 async function handleRequest(request) {
-  const parsedUrl = new URL(request.url)
-  let path = parsedUrl.pathname
+  let response
 
-  if (path.endsWith("/")) {
-    path += "index.html"
+  if (isPost(request) && routeMatches(request, '/lookup')) {
+    response = await lookup(request)
   }
 
-  const response = await fetch(`${baseUrl}${path}`)
+  if (isPost(request) && routeMatches(request, '/webhook')) {
+    response = await webhook(request)
+  }
+
+  if (!response) {
+    response = new Response("Not found", { status: 404 })
+  }
+
   return response
 }
