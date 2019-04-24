@@ -1,5 +1,5 @@
 import {lookup, webhook} from './src/routes';
-import {isPost, routeMatches} from './src/utils/request';
+import Router from './router';
 
 addEventListener('fetch', event => {
   event.respondWith(handleRequest(event.request));
@@ -8,13 +8,11 @@ addEventListener('fetch', event => {
 async function handleRequest(request) {
   let response;
 
-  if (isPost(request) && routeMatches(request, '/lookup')) {
-    response = await lookup(request);
-  }
+  const r = new Router();
+  r.post('/lookup', lookup);
+  r.post('/webhook', webhook);
 
-  if (isPost(request) && routeMatches(request, '/webhook')) {
-    response = await webhook(request);
-  }
+  response = await r.route(request);
 
   if (!response) {
     response = new Response('Not found', {status: 404});
