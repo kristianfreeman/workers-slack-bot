@@ -7,13 +7,11 @@ addEventListener("fetch", event => {
 })
 
 async function handleRequest(request) {
-  let response
-
   const r = new Router()
   r.post("/lookup", lookup)
   r.post("/webhook", webhook)
 
-  response = await r.route(request)
+  let response = await r.route(request)
 
   if (!response) {
     response = new Response("Not found", {status: 404})
