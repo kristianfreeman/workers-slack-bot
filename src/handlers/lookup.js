@@ -13,12 +13,7 @@ export default async request => {
     const response = await fetchGithubIssue(owner, repo, issue_number)
     const issue = await response.json()
 
-    const blocks = constructGhIssueSlackMessage(
-      issue,
-      owner,
-      repo,
-      issue_number
-    )
+    const blocks = constructGhIssueSlackMessage(issue, text)
 
     return new Response(
       JSON.stringify({

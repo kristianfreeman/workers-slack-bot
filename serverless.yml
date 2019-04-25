@@ -17,7 +17,7 @@ plugins:
 functions:
   worker:
     name: workers-slack-bot
-    script: worker
+    script: index
     webpack: true
     events:
       - http:

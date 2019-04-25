@@ -2,17 +2,14 @@ const compact = array => array.filter(el => el)
 
 export const constructGhIssueSlackMessage = (
   issue,
-  owner,
-  repo,
-  issue_number,
+  issue_string,
   prefix_text
 ) => {
-  const issue_string = `${owner}/${repo}#${issue_number}`
   const issue_link = `<${issue.html_url}|${issue_string}>`
   const user_link = `<${issue.user.html_url}|${issue.user.login}>`
   const date = new Date(Date.parse(issue.created_at)).toLocaleDateString()
 
-  const textChunks = [
+  const textLines = [
     prefix_text,
     `*${issue.title} - ${issue_link}*`,
     issue.body,
@@ -24,7 +21,7 @@ export const constructGhIssueSlackMessage = (
       type: "section",
       text: {
         type: "mrkdwn",
-        text: compact(textChunks).join("\n")
+        text: compact(textLines).join("\n")
       },
       accessory: {
         type: "image",

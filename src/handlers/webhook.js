@@ -1,5 +1,4 @@
 import {slackWebhookUrl} from "../config"
-import {fetchGithubIssue, parseGhIssueString} from "../utils/github"
 import {constructGhIssueSlackMessage} from "../utils/slack"
 
 export default async request => {
