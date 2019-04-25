@@ -9,7 +9,7 @@ export const constructGhIssueSlackMessage = (
   const user_link = `<${issue.user.html_url}|${issue.user.login}>`
   const date = new Date(Date.parse(issue.created_at)).toLocaleDateString()
 
-  const textLines = [
+  const text_lines = [
     prefix_text,
     `*${issue.title} - ${issue_link}*`,
     issue.body,
@@ -21,7 +21,7 @@ export const constructGhIssueSlackMessage = (
       type: "section",
       text: {
         type: "mrkdwn",
-        text: compact(textLines).join("\n")
+        text: compact(text_lines).join("\n")
       },
       accessory: {
         type: "image",

@@ -5,13 +5,14 @@ export default async request => {
   try {
     const body = await request.text()
     const {action, issue, repository} = JSON.parse(body)
-    const text = `An issue was ${action}:`
+    const prefix_text = `An issue was ${action}:`
+    const issue_string = `${repository.owner.login}/${repository.name}#${
+      issue.number
+    }`
     const blocks = constructGhIssueSlackMessage(
       issue,
-      repository.owner.login,
-      repository.name,
-      issue.number,
-      text
+      issue_string,
+      prefix_text
     )
 
     const postToSlack = await fetch(slackWebhookUrl, {
