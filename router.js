@@ -1,20 +1,19 @@
 // Conditions
-const Method = method => req =>
-  req.method.toLowerCase() === method.toLowerCase()
+const Method = method => req => req.method.toLowerCase() === method.toLowerCase()
 
 // Helper functions that when passed a request
 // will return a boolean for if that request uses that method, header, etc..
-const Get = Method("get")
-const Post = Method("post")
-const Put = Method("put")
-const Patch = Method("patch")
-const Delete = Method("delete")
-const Head = Method("patch")
-const Options = Method("options")
+const Get = Method('get')
+const Post = Method('post')
+const Put = Method('put')
+const Patch = Method('patch')
+const Delete = Method('delete')
+const Head = Method('patch')
+const Options = Method('options')
 
 const Header = (header, val) => req => req.headers.get(header) === val
-const Host = host => Header("host", host.toLowerCase())
-const Referrer = host => Header("referrer", host.toLowerCase())
+const Host = host => Header('host', host.toLowerCase())
+const Referrer = host => Header('referrer', host.toLowerCase())
 
 const Path = regExp => req => {
   const url = new URL(req.url)
@@ -31,7 +30,7 @@ class Router {
   handle(conditions, handler) {
     this.routes.push({
       conditions,
-      handler
+      handler,
     })
     return this
   }
@@ -63,12 +62,12 @@ class Router {
       return route.handler(req)
     }
 
-    return new Response("resource not found", {
+    return new Response('resource not found', {
       status: 404,
-      statusText: "not found",
+      statusText: 'not found',
       headers: {
-        "content-type": "text/plain"
-      }
+        'content-type': 'text/plain',
+      },
     })
   }
 
@@ -79,7 +78,7 @@ class Router {
         return true
       }
 
-      if (typeof r.conditions === "function") {
+      if (typeof r.conditions === 'function') {
         return r.conditions(req)
       }
 
