@@ -19,5 +19,7 @@ $RECYCLE.BIN/
 .env
 
 dist
-
+worker
 src/config.js
+
+wrangler.toml
