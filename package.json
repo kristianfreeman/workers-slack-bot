@@ -6,7 +6,7 @@
   "version": "0.1.0",
   "author": "Kristian Freeman <kristian@kristianfreeman.com>",
   "dependencies": {
-    "qs": "^6.7.0",
+    "qs": "^6.7.3",
     "wrangler-js": "^0.1.9"
   }
 }
